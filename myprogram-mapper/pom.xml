@@ -11,5 +11,11 @@
 
     <artifactId>myprogram-mapper</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.xuren</groupId>
+            <artifactId>myprogram-pojo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

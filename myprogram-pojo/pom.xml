@@ -11,5 +11,11 @@
 
     <artifactId>myprogram-pojo</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.xuren</groupId>
+            <artifactId>myprogram-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

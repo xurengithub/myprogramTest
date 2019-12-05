@@ -8,8 +8,21 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <!-- 打包成war -->
+    <packaging>war</packaging>
     <artifactId>myprogram-mini-api</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.xuren</groupId>
+            <artifactId>myprogram-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- 添加依赖，为了打包成war -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>
