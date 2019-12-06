@@ -1,6 +1,18 @@
 *.iml
+*.ipr
+*.iws
 /.idea
 /out
-/classes
+**/classes
 /logs
+target/
+
+*.log
+.DS_Store
+Thumbs.db
+
+*.jar
+*.war
+*.zip
+
 

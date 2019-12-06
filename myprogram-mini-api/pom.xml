@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <!-- 打包成war -->
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <artifactId>myprogram-mini-api</artifactId>
     <dependencies>
         <dependency>
@@ -24,5 +24,13 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
