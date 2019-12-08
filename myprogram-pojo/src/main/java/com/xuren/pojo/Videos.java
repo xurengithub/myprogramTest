@@ -1,4 +1,4 @@
-package com.xuren;
+package com.xuren.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

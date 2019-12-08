@@ -1,11 +1,11 @@
-package com.xuren;
+package com.xuren.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "users_like_videos")
-public class UsersLikeVideos {
+@Table(name = "users_fans")
+public class UsersFans {
     @Id
     private String id;
 
@@ -16,10 +16,10 @@ public class UsersLikeVideos {
     private String userId;
 
     /**
-     * 视频
+     * 粉丝
      */
-    @Column(name = "video_id")
-    private String videoId;
+    @Column(name = "fan_id")
+    private String fanId;
 
     /**
      * @return id
@@ -54,20 +54,20 @@ public class UsersLikeVideos {
     }
 
     /**
-     * 获取视频
+     * 获取粉丝
      *
-     * @return video_id - 视频
+     * @return fan_id - 粉丝
      */
-    public String getVideoId() {
-        return videoId;
+    public String getFanId() {
+        return fanId;
     }
 
     /**
-     * 设置视频
+     * 设置粉丝
      *
-     * @param videoId 视频
+     * @param fanId 粉丝
      */
-    public void setVideoId(String videoId) {
-        this.videoId = videoId;
+    public void setFanId(String fanId) {
+        this.fanId = fanId;
     }
 }
