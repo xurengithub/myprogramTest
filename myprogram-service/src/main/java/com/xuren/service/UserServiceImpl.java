@@ -2,6 +2,8 @@ package com.xuren.service;
 
 import com.xuren.mapper.UsersMapper;
 import com.xuren.pojo.Users;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    private Logger logger = LogManager.getLogger(this.getClass());
 
     @Autowired
     private UsersMapper usersMapper;
@@ -20,7 +24,6 @@ public class UserServiceImpl implements UserService {
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public boolean queryUsernameIsExist(String userName) {
-
         Users user = new Users();
         user.setUsername(userName);
         Users result = usersMapper.selectOne(user);
@@ -31,7 +34,6 @@ public class UserServiceImpl implements UserService {
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void saveUser(Users user) {
-
         String userId = sid.nextShort();
         user.setId(userId);
         usersMapper.insert(user);
