@@ -87,7 +87,7 @@ public class RegisterLoginController extends BasicController{
 
     @ApiOperation(value="用户注销", notes="用户登录的接口")
     @ApiImplicitParam(name="userId", value = "用户id", required = true, dataType = "String", paramType = "query")
-    @PostMapping("/login")
+    @PostMapping("/logout")
     public IMoocJSONResult logout(String userId) throws Exception {
         redis.del(USER_REDIS_SESSION + ":" + userId);
         return IMoocJSONResult.ok();
