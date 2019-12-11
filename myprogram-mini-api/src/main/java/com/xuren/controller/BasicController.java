@@ -11,4 +11,8 @@ public class BasicController {
     public RedisOperator redis;
 
     public static final String USER_REDIS_SESSION = "user-redis-session";
+
+    public static final String FILE_SPACE = "C:/myprogram_dev/video";
+
+    public static final String FFMPEG_EXE = "";
 }
