@@ -1,7 +1,8 @@
-package com.xuren.service;
+package com.xuren.service.impl;
 
 import com.xuren.mapper.UsersMapper;
 import com.xuren.pojo.Users;
+import com.xuren.service.UserService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.n3r.idworker.Sid;
