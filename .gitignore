@@ -16,5 +16,6 @@ Thumbs.db
 *.zip
 
 *.properties
+resources/*.properties
 
 
