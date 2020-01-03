@@ -8,9 +8,7 @@ import junit.framework.TestCase;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.curator.framework.recipes.cache.ChildData;
-import org.apache.curator.framework.recipes.cache.NodeCache;
-import org.apache.curator.framework.recipes.cache.NodeCacheListener;
+import org.apache.curator.framework.recipes.cache.*;
 import org.apache.curator.retry.RetryForever;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -251,6 +249,40 @@ public class TestA {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testPathChildrenCahce() throws Exception {
+        CuratorFramework client = ZookeeperClientFactory.createSimple(zookeeperConfig.getAddress());
+        String path = "/test/pathcache";
+        client.start();
+        if(client.checkExists().forPath(path) == null) {
+            client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path);
+        }
+
+        PathChildrenCacheListener listener = new PathChildrenCacheListener() {
+            @Override
+            public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+                ChildData data = event.getData();
+                switch (event.getType()) {
+                    case CHILD_ADDED:
+                        logger.info("add");
+                        break;
+                    case CHILD_REMOVED:
+                        logger.info("remove");
+                        break;
+                    case CHILD_UPDATED:
+                        logger.info("update");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+
+        PathChildrenCache childrenCache = new PathChildrenCache(client, path, true);
+        childrenCache.getListenable().addListener(listener);
+
     }
 
     @Before
