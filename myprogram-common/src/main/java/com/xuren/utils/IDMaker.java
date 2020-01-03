@@ -1,11 +1,13 @@
 package com.xuren.utils;
 
+import com.xuren.config.ZookeeperConfig;
 import com.xuren.factorys.ZookeeperClientFactory;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.imps.CuratorFrameworkState;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.CreateMode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,9 +16,11 @@ public class IDMaker {
     private Logger logger = LogManager.getLogger(this.getClass());
     private  CuratorFramework client;
     private String conStr = "";
+    @Autowired
+    private ZookeeperConfig zookeeperConfig;
 
     public void init() {
-        client = ZookeeperClientFactory.createSimple(conStr);
+        client = ZookeeperClientFactory.createSimple(zookeeperConfig.getAddress());
         client.start();
         logger.info("succ");
     }
