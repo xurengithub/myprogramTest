@@ -6,7 +6,9 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 
 public class ZookeeperClientFactory {
-
+    // 分布式API目录
+    // 分布式ID生衡器
+    // 分布式节点命名
     private ZookeeperClientFactory(){
 
     }
