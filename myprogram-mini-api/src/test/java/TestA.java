@@ -255,6 +255,8 @@ public class TestA {
     public void testPathChildrenCahce() throws Exception {
         CuratorFramework client = ZookeeperClientFactory.createSimple(zookeeperConfig.getAddress());
         String path = "/test/pathcache";
+        String subPath = "/test/pathcache/id-";
+
         client.start();
         if(client.checkExists().forPath(path) == null) {
             client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path);
@@ -282,8 +284,10 @@ public class TestA {
 
         PathChildrenCache childrenCache = new PathChildrenCache(client, path, true);
         childrenCache.getListenable().addListener(listener);
-
+        childrenCache.start(PathChildrenCache.StartMode.BUILD_INITIAL_CACHE);
     }
+
+
 
     @Before
     public void testBefore() {
